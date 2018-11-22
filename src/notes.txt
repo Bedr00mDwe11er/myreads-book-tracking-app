@@ -1,8 +1,0 @@
-
-
-TODO: move state up
-====================
-Search page and main page will share the state of the books and the location of the books
-state should be moved from bookshelves up to main page then when i start working on search page state needs to be moved up into app
-since the two components main page and search page share the state.
-

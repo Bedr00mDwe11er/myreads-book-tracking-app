@@ -1,13 +1,15 @@
 import React from 'react'
 
 export default class BookShelfChanger extends React.Component {
- constructor(props) {
-   super(props);
-   this.handleChange = this.handleChange.bind(this);
- }
+  constructor(props) {
+    super(props);
+    
+    //binding
+    this.handleChange = this.handleChange.bind(this);
+  }
+  
   handleChange(e) {
-    //calls the methods on the bookShelves component
-    console.log(1);
+    //this how book can tell app which shelf to move book to
     this.props.moveBookToShelf(e.target.value,this);
   }
   

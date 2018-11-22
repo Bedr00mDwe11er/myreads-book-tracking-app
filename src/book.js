@@ -3,19 +3,18 @@ import BookShelfChanger from './bookShelfChanger.js'
 
 export default class Book extends React.Component {
   constructor(props) {
-        super(props);
-        //binding is necessary for the callback
-        this.changeShelf = this.changeShelf.bind(this);
-    	console.log(this.props);
-        }
+    super(props);
+    
+    //bind to this.
+    this.changeShelf = this.changeShelf.bind(this);
+  }
   
-  //this method checks which shelf was selected.
+  /*
+  changeShelf is a method that sends the book and user selected shelf
+  as an agruments to moveBook method that moves the book instance to the shelf the user selected 
+  moveBook is a method in the component that composes the book components, which is BookApp.
+  */
   changeShelf(e) {
-    //calls the methods on the bookShelves component
-    console.log('2');
-    console.log(e);
-    //console.log(props);
-    console.log(this.props);
     this.props.moveBookToShelf(e, this);
   }
   
@@ -24,13 +23,13 @@ export default class Book extends React.Component {
       <li id={this.props.id}>
         <div className="book">
           <div className="book-top">
-            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage:`${this.props.bookCover}`}}></div>
+            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage:this.props.bookCover}}></div>
               <BookShelfChanger moveBookToShelf={(e)=>this.changeShelf(e)} shelf={this.props.shelf} />
-            </div>
+          </div>
           <h3 className="book-title">{this.props.title}</h3>
-         <p className="book-authors">{this.props.author}</p>
-      </div>
-        </li>
-          );
-      }
+          <p className="book-authors">{this.props.author}</p>
+        </div>
+      </li>
+    );
   }
+}
